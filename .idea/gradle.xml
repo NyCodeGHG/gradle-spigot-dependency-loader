@@ -15,6 +15,30 @@
           </set>
         </option>
       </GradleProjectSettings>
+      <GradleProjectSettings>
+        <compositeConfiguration>
+          <compositeBuild compositeDefinitionSource="SCRIPT">
+            <builds>
+              <build path="$PROJECT_DIR$" name="gradle-spigot-dependency-loader">
+                <projects>
+                  <project path="$PROJECT_DIR$" />
+                </projects>
+              </build>
+            </builds>
+          </compositeBuild>
+        </compositeConfiguration>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/example" />
+        <option name="gradleHome" value="$PROJECT_DIR$/../../../../ProgramData/chocolatey/lib/gradle/tools/gradle-7.0" />
+        <option name="gradleJvm" value="#JAVA_HOME" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/buildSrc" />
+            <option value="$PROJECT_DIR$/example" />
+          </set>
+        </option>
+      </GradleProjectSettings>
     </option>
   </component>
 </project>

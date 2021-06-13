@@ -1,10 +1,16 @@
 plugins {
-    kotlin("jvm") version "1.4.32"
+    kotlin("jvm") version "1.5.10"
+    kotlin("plugin.serialization") version "1.5.10"
     `java-gradle-plugin`
 }
 
 repositories {
     mavenCentral()
+}
+
+dependencies {
+    implementation("com.charleskorn.kaml", "kaml", "0.34.0")
+    implementation("org.jetbrains.kotlinx", "kotlinx-serialization-core", "1.2.1")
 }
 
 java {
@@ -27,5 +33,11 @@ tasks {
         kotlinOptions {
             jvmTarget = "1.8"
         }
+    }
+
+    sourceSets
+
+    jar {
+
     }
 }

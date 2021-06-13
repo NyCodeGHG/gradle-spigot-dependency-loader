@@ -1,0 +1,7 @@
+name: "ExamplePlugin"
+version: "1.0.0"
+main: "org.example.plugin.ExamplePlugin"
+commands:
+  time:
+    description: "Displays the current time"
+    usage: "/time"
