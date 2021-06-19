@@ -24,7 +24,7 @@ plugins {
 
 ```groovy
 plugins {
-    id "de.nycode.spigot-dependency-loader" version "1.0.0"
+    id "de.nycode.spigot-dependency-loader" version "1.0"
 }
 ```
 

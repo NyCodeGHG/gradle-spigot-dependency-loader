@@ -39,13 +39,12 @@ class GradleSpigotDependencyLoaderPlugin : Plugin<Project> {
                             outputDirectory.set(processedYaml.parent)
                         }
                     }
-                
+
                 project.tasks.named("classes") { it.dependsOn(exportTask) }
                 project.configurations.getByName("compileOnly").extendsFrom(spigotDependencies)
             }
         }
     }
-
 }
 
 private fun Project.makeExtension() =
