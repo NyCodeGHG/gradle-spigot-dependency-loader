@@ -1,6 +1,6 @@
-# gradle-spigot-dependency loader
+# Gradle Spigot Dependency Loader
 
-[![Gradle Plugin Release](https://img.shields.io/badge/gradle%20plugin-1.0-blue.svg)](https://plugins.gradle.org/plugin/de.nycode.spigot-dependency-loaderj) [![GitHub Release](https://img.shields.io/github/release/jetbrains/gradle-intellij-plugin.svg)](https://github.com/NyCodeGHG/gradle-spigot-dependency-loaderreleases)
+[![Gradle Plugin Portal](https://img.shields.io/gradle-plugin-portal/v/de.nycode.spigot-dependency-loader?logo=gradle&style=flat-square)](https://plugins.gradle.org/plugin/de.nycode.spigot-dependency-loader) [![GitHub Release](https://img.shields.io/github/release/NyCodeGHG/gradle-spigot-dependency-loader.svg?logo=github&style=flat-square)](https://github.com/NyCodeGHG/gradle-spigot-dependency-loader/releases)
 
 A simple Gradle plugin, to use the new MC 1.16.5+ runtime dependency loader to load your dependencies at runtime
 
