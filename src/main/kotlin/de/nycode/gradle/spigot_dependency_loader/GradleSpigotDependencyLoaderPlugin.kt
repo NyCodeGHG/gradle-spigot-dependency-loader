@@ -30,7 +30,7 @@ class GradleSpigotDependencyLoaderPlugin : Plugin<Project> {
                             val file = if (processedYaml.exists()) {
                                 processedYaml
                             } else {
-                                main.resources.sourceDirectories.files.firstOrNull { file -> file.name == "plugin.yaml" }
+                                main.resources.singleFile.walkTopDown().firstOrNull { file -> file.name == "plugin.yml" }
                                     ?.toPath()
                                     ?: error("Please create a plugin.yml in the main resources directory or use spigotDependencyLoader { defaultTask = false }")
                             }
