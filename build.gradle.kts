@@ -1,8 +1,12 @@
 plugins {
+    id("com.gradle.plugin-publish") version "0.15.0"
+    `java-gradle-plugin`
+    id("org.jlleitschuh.gradle.ktlint") version "10.1.0"
     kotlin("jvm") version "1.5.10"
     kotlin("plugin.serialization") version "1.5.10"
-    `java-gradle-plugin`
 }
+
+version = "1.0"
 
 repositories {
     mavenCentral()
@@ -28,16 +32,33 @@ gradlePlugin {
     }
 }
 
+pluginBundle {
+    website = "https://github.com/NyCodeGHG/gradle-spigot-dependency-loader"
+    vcsUrl = "https://github.com/NyCodeGHG/gradle-spigot-dependency-loader"
+
+    description = "Automatically download your dependencies at runtime on 1.17+"
+
+    (plugins) {
+        "gradle-spigot-dependency-loader" {
+            displayName = "Spigot Dependency Loader"
+            description = this@pluginBundle.description
+            tags = listOf("spigot", "gradle", "dependency-management", "runtime-dependency-management")
+            version = project.version.toString()
+        }
+    }
+
+    mavenCoordinates {
+        groupId = "de.nycode"
+        artifactId = "spigot-dependency-loader"
+        version = project.version.toString()
+    }
+}
+
 tasks {
     withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
         kotlinOptions {
             jvmTarget = "1.8"
+            freeCompilerArgs = listOf("-Xopt-in=kotlin.RequiresOptIn")
         }
-    }
-
-    sourceSets
-
-    jar {
-
     }
 }
