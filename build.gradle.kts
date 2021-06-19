@@ -36,7 +36,7 @@ pluginBundle {
     website = "https://github.com/NyCodeGHG/gradle-spigot-dependency-loader"
     vcsUrl = "https://github.com/NyCodeGHG/gradle-spigot-dependency-loader"
 
-    description = "Automatically download your dependencies at runtime on 1.17+"
+    description = "Automatically download your dependencies at runtime on Spigot 1.16.5+"
 
     (plugins) {
         "gradle-spigot-dependency-loader" {

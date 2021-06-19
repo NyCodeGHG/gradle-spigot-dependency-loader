@@ -32,7 +32,7 @@ class GradleSpigotDependencyLoaderPlugin : Plugin<Project> {
                             } else {
                                 main.resources.singleFile.walkTopDown().firstOrNull { file -> file.name == "plugin.yml" }
                                     ?.toPath()
-                                    ?: error("Please create a plugin.yml in the main resources directory or use spigotDependencyLoader { defaultTask = false }")
+                                    ?: error("Please create a plugin.yml in the main resources directory or use spigotDependencyLoader { createDefaultTask.set(false) }")
                             }
 
                             pluginYml.set(file)
