@@ -1,1 +1,1 @@
-rootProject.name = ("gradle-spigot-dependency-loader")
+rootProject.name = "gradle-spigot-dependency-loader"

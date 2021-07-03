@@ -15,6 +15,15 @@ A simple Gradle plugin, to use the new MC 1.16.5+ runtime dependency loader to l
 plugins {
     id("de.nycode.spigot-dependency-loader") version "1.0"
 }
+
+dependencies {
+    // the plugin adds a spigot dependency configuration, which will automatically add
+    // all it's dependencies to the plugin.yml
+    // compileOnly will automatically inherit from spigot so all spigot dependencies are visible to the compiler and
+    // your IDE
+    // Also only mavenCentral() dependencies should be added here
+    spigot("com.squareup.okhttp3", "okhttp", "4.9.0")
+}
 ```
 
 </details>
@@ -25,6 +34,15 @@ plugins {
 ```groovy
 plugins {
     id "de.nycode.spigot-dependency-loader" version "1.0"
+}
+
+dependencies {
+    // the plugin adds a spigot dependency configuration, which will automatically add
+    // all it's dependencies to the plugin.yml
+    // compileOnly will automatically inherit from spigot so all spigot dependencies are visible to the compiler and
+    // your IDE
+    // Also only mavenCentral() dependencies should be added here
+    spigot "com.squareup.okhttp3", "okhttp", "4.9.0"
 }
 ```
 

@@ -33,6 +33,6 @@ internal data class PluginYml(
     data class Permission(
         val description: String? = null,
         val children: Map<String, Boolean> = emptyMap(),
-        val default: String
+        val default: String? = null
     )
 }

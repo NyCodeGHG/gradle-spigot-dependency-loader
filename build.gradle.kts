@@ -2,11 +2,11 @@ plugins {
     id("com.gradle.plugin-publish") version "0.15.0"
     `java-gradle-plugin`
     id("org.jlleitschuh.gradle.ktlint") version "10.1.0"
-    kotlin("jvm") version "1.5.10"
-    kotlin("plugin.serialization") version "1.5.10"
+    kotlin("jvm") version "1.5.20"
+    kotlin("plugin.serialization") version "1.5.20"
 }
 
-version = "1.0"
+version = "1.0.1"
 
 repositories {
     mavenCentral()
