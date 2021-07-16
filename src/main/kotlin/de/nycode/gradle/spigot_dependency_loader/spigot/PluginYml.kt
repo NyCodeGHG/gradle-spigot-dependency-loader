@@ -8,17 +8,29 @@ internal data class PluginYml(
     val name: String? = null,
     val provides: List<String> = emptyList(),
     val version: String? = null,
-    val description: String? = null,
+    val main: String? = null,
     val author: String? = null,
     val authors: List<String> = emptyList(),
     val contributors: List<String> = emptyList(),
+    val description: String? = null,
     val website: String? = null,
-    val main: String? = null,
+    val prefix: String? = null,
+    val load: LoadOrder? = null,
+    val depend: List<String> = emptyList(),
+    @Suppress("SpellCheckingInspection")
+    @SerialName("softdepend")
+    val softDepend: List<String> = emptyList(),
+    @Suppress("SpellCheckingInspection")
+    @SerialName("loadbefore")
+    val loadBefore: List<String> = emptyList(),
+    val commands: Map<String, Command> = emptyMap(),
+    val permissions: Map<String, Permission> = emptyMap(),
+    @SerialName("default-permission")
+    val defaultPermission: PermissionDefault? = null,
+    val awareness: Set<String> = emptySet(),
     @SerialName("api-version")
     val apiVersion: String? = null,
     val libraries: List<String> = emptyList(),
-    val commands: Map<String, Command> = emptyMap(),
-    val permissions: Map<String, Permission> = emptyMap()
 ) {
 
     @Serializable
@@ -35,4 +47,20 @@ internal data class PluginYml(
         val children: Map<String, Boolean> = emptyMap(),
         val default: String? = null
     )
+
+    @Serializable
+    enum class LoadOrder {
+        @Suppress("SpellCheckingInspection")
+        @SerialName("POSTWORLD")
+        POST_WORLD,
+        STARTUP
+    }
+
+    @Serializable
+    enum class PermissionDefault {
+        FALSE,
+        NOT_OP,
+        OP,
+        TRUE
+    }
 }
