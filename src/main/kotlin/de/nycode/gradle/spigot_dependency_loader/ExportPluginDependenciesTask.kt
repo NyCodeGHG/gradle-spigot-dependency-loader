@@ -7,7 +7,6 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import org.gradle.api.DefaultTask
 import org.gradle.api.artifacts.Configuration
-import org.gradle.api.artifacts.Dependency
 import org.gradle.api.provider.ListProperty
 import org.gradle.api.provider.Property
 import org.gradle.api.tasks.Input
@@ -90,21 +89,10 @@ abstract class ExportPluginDependenciesTask : DefaultTask() {
 
         val rawDependencies =
             configurations.get() + listOf(project.configurations.getByName("spigot"))
-        val dependencies = rawDependencies.flatMap {
-            it.dependencies
-        }.map {
-            try {
-                requireNotNull(it.group) { "Runtime dependencies must specify a groupId" }
-                requireNotNull(it.name) { "Runtime dependencies must specify a artifactId" }
-                requireNotNull(it.version) { "Runtime dependencies must specify a version" }
-            } catch (e: NullPointerException) {
-                throw IllegalArgumentException(
-                    "Artifact ${it.notation} did not qualify for runtime dependency management",
-                    e
-                )
-            }
-
-            it.notation
+        val dependencies = rawDependencies.flatMap { configuration ->
+            configuration.resolvedConfiguration.firstLevelModuleDependencies
+                .filter { it.moduleArtifacts.isNotEmpty() }
+                .map { it.module.toString() }
         } + extraDependencies
 
         val newPluginYml = pluginYml.copy(libraries = dependencies)
@@ -114,6 +102,3 @@ abstract class ExportPluginDependenciesTask : DefaultTask() {
         didWork = true
     }
 }
-
-private val Dependency.notation: String
-    get() = "$group:$name:$version"

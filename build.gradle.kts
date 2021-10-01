@@ -1,9 +1,9 @@
 plugins {
-    id("com.gradle.plugin-publish") version "0.15.0"
+    id("com.gradle.plugin-publish") version "0.16.0"
     `java-gradle-plugin`
-    id("org.jlleitschuh.gradle.ktlint") version "10.1.0"
-    kotlin("jvm") version "1.5.20"
-    kotlin("plugin.serialization") version "1.5.20"
+    id("org.jlleitschuh.gradle.ktlint") version "10.2.0"
+    kotlin("jvm") version "1.5.31"
+    kotlin("plugin.serialization") version "1.5.31"
 }
 
 version = "1.0.3"
@@ -12,14 +12,25 @@ repositories {
     mavenCentral()
 }
 
+val integrationTest: SourceSet by sourceSets.creating {
+    compileClasspath += sourceSets.main.get().output
+    runtimeClasspath += sourceSets.main.get().output
+}
+
+val integrationTestImplementation: Configuration by configurations.getting {
+    extendsFrom(configurations.implementation.get())
+}
+
 dependencies {
     implementation("com.charleskorn.kaml", "kaml", "0.34.0")
     implementation("org.jetbrains.kotlinx", "kotlinx-serialization-core", "1.2.1")
+    integrationTestImplementation(kotlin("test-junit5"))
 }
 
 java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(8))
+        vendor.set(JvmVendorSpec.ADOPTOPENJDK)
     }
 }
 
@@ -30,8 +41,26 @@ gradlePlugin {
             implementationClass = "de.nycode.gradle.spigot_dependency_loader.GradleSpigotDependencyLoaderPlugin"
         }
     }
+    testSourceSets(integrationTest)
 }
 
+val integrationTestTask = task<Test>("integrationTest") {
+    description = "Runs integration tests."
+    group = "verification"
+
+    testClassesDirs = integrationTest.output.classesDirs
+    classpath = integrationTest.runtimeClasspath
+    shouldRunAfter("test")
+}
+
+tasks {
+    check {
+        dependsOn(integrationTestTask)
+    }
+    withType<Test> {
+        useJUnitPlatform()
+    }
+}
 pluginBundle {
     website = "https://github.com/NyCodeGHG/gradle-spigot-dependency-loader"
     vcsUrl = "https://github.com/NyCodeGHG/gradle-spigot-dependency-loader"
