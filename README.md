@@ -13,7 +13,7 @@ A simple Gradle plugin, to use the new MC 1.16.5+ runtime dependency loader to l
 
 ```kotlin
 plugins {
-    id("de.nycode.spigot-dependency-loader") version "1.0.3"
+    id("de.nycode.spigot-dependency-loader") version "1.1.0"
 }
 
 dependencies {
@@ -33,7 +33,7 @@ dependencies {
 
 ```groovy
 plugins {
-    id "de.nycode.spigot-dependency-loader" version "1.0.3"
+    id "de.nycode.spigot-dependency-loader" version "1.1.0"
 }
 
 dependencies {

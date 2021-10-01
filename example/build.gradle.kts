@@ -2,7 +2,7 @@ plugins {
     java
     // version gets ignored here because we include the plugin build in the example build for local testing
     // normal users need to specify the version from the Gradle plugin portal
-    id("de.nycode.spigot-dependency-loader") /* version "1.0.1" */
+    id("de.nycode.spigot-dependency-loader") /* version "1.1.0" */
 }
 
 group = "org.example"
