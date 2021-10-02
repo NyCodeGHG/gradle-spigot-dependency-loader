@@ -2,10 +2,10 @@ import org.junit.jupiter.api.io.TempDir
 import java.nio.file.Path
 import kotlin.test.Test
 
-class BomTest {
+class SimpleTest {
 
     @Test
-    fun `test gradle boms`(@TempDir path: Path) = runTest(path) {
+    fun `test simple pluginyml generation`(@TempDir path: Path) = runTest(path) {
         buildFileContent = """
             |plugins {
             |    java
@@ -17,8 +17,7 @@ class BomTest {
             |}
             |
             |dependencies {
-            |    spigot(platform("com.squareup.okhttp3:okhttp-bom:4.9.2"))
-            |    spigot("com.squareup.okhttp3", "okhttp")
+            |    spigot("com.squareup.okhttp3", "okhttp", "4.9.2")
             |}
         """.trimMargin()
 
