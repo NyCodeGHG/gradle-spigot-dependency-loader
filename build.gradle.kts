@@ -6,7 +6,7 @@ plugins {
     kotlin("plugin.serialization") version "1.5.31"
 }
 
-version = "1.1.0"
+version = "1.1.1"
 
 repositories {
     mavenCentral()
