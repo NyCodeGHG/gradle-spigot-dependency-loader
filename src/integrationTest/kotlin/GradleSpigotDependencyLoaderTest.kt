@@ -10,7 +10,16 @@ class GradleSpigotDependencyLoaderTestBuilder(
     var buildFileContent: String = "",
     var pluginYmlContent: String = "",
     var expectedPluginYmlContent: String = "",
-    var gradleArgs: String = ""
+    var gradleArgs: String = "",
+    var init: TestInitializer.() -> Unit = {}
+) {
+    fun init(builder: TestInitializer.() -> Unit) {
+        init = builder
+    }
+}
+
+class TestInitializer(
+    val resourcesDir: Path
 )
 
 inline fun runTest(path: Path, builder: GradleSpigotDependencyLoaderTestBuilder.() -> Unit) {
@@ -20,6 +29,7 @@ inline fun runTest(path: Path, builder: GradleSpigotDependencyLoaderTestBuilder.
     val pluginYml = (path / "src" / "main" / "resources")
         .createDirectories() / "plugin.yml"
     pluginYml.createFile().writeText(builder.pluginYmlContent)
+    builder.init(TestInitializer(pluginYml.parent))
     GradleRunner.create()
         .withProjectDir(path.toFile())
         .withArguments(builder.gradleArgs)
