@@ -6,7 +6,7 @@ plugins {
     kotlin("plugin.serialization") version "1.5.31"
 }
 
-version = "1.1.0"
+version = "1.1.1"
 
 repositories {
     mavenCentral()
@@ -22,8 +22,8 @@ val integrationTestImplementation: Configuration by configurations.getting {
 }
 
 dependencies {
-    implementation("com.charleskorn.kaml", "kaml", "0.34.0")
-    implementation("org.jetbrains.kotlinx", "kotlinx-serialization-core", "1.2.1")
+    implementation("com.charleskorn.kaml", "kaml", "0.36.0")
+    implementation("org.jetbrains.kotlinx", "kotlinx-serialization-core", "1.3.0")
     integrationTestImplementation(kotlin("test-junit5"))
 }
 
