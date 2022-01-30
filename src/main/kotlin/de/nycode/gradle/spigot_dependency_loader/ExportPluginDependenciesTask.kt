@@ -91,8 +91,16 @@ abstract class ExportPluginDependenciesTask : DefaultTask() {
             configurations.get() + listOf(project.configurations.getByName("spigot"))
         val dependencies = rawDependencies.flatMap { configuration ->
             configuration.resolvedConfiguration.firstLevelModuleDependencies
-                .filter { it.moduleArtifacts.isNotEmpty() }
+                .asSequence()
+                .mapNotNull {
+                    if (it.moduleArtifacts.isNotEmpty()) {
+                        it
+                    } else {
+                        it.children.firstOrNull { child -> child.moduleArtifacts.any { "-jvm" in it.name } }
+                    }
+                }
                 .map { it.module.toString() }
+                .toList()
         } + extraDependencies
 
         val newPluginYml = pluginYml.copy(libraries = dependencies)

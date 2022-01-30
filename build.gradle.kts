@@ -1,9 +1,9 @@
 plugins {
-    id("com.gradle.plugin-publish") version "0.16.0"
+    id("com.gradle.plugin-publish") version "0.20.0"
     `java-gradle-plugin`
-    id("org.jlleitschuh.gradle.ktlint") version "10.2.0"
-    kotlin("jvm") version "1.5.31"
-    kotlin("plugin.serialization") version "1.5.31"
+    id("org.jlleitschuh.gradle.ktlint") version "10.2.1"
+    kotlin("jvm") version "1.6.10"
+    kotlin("plugin.serialization") version "1.6.10"
 }
 
 version = "1.1.1"
@@ -22,8 +22,8 @@ val integrationTestImplementation: Configuration by configurations.getting {
 }
 
 dependencies {
-    implementation("com.charleskorn.kaml", "kaml", "0.36.0")
-    implementation("org.jetbrains.kotlinx", "kotlinx-serialization-core", "1.3.0")
+    implementation("com.charleskorn.kaml", "kaml", "0.40.0")
+    implementation("org.jetbrains.kotlinx", "kotlinx-serialization-core", "1.3.2")
     integrationTestImplementation(kotlin("test-junit5"))
 }
 

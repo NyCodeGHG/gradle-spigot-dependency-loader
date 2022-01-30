@@ -14,7 +14,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("org.spigotmc", "spigot-api", "1.17-R0.1-SNAPSHOT")
+    compileOnly("org.spigotmc", "spigot-api", "1.18.1-R0.1-SNAPSHOT")
 
     // the plugin adds a spigot dependency configuration, which will automatically add
     // all it's dependencies to the plugin.yml
@@ -22,6 +22,7 @@ dependencies {
     // your IDE
     // Also only mavenCentral() dependencies should be added here
     spigot("com.squareup.okhttp3", "okhttp", "4.9.0")
+
 }
 
 tasks {
