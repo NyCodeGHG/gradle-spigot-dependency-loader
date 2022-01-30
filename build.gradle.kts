@@ -71,7 +71,7 @@ pluginBundle {
         "gradle-spigot-dependency-loader" {
             displayName = "Spigot Dependency Loader"
             description = this@pluginBundle.description
-            tags = listOf("spigot", "gradle", "dependency-management", "runtime-dependency-management")
+            tags = listOf("spigot", "dependency-management", "runtime-dependency-management")
             version = project.version.toString()
         }
     }
